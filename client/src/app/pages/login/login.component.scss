@@ -1,0 +1,14 @@
+mat-card {
+  width: fit-content;
+
+  .login-form {
+    min-width: 300px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .button-container {
+    display: flex;
+  }
+}
