@@ -1,0 +1,19 @@
+mat-card {
+  width: fit-content;
+
+  .sign-up-form {
+    min-width: 300px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .button-container {
+    display: flex;
+    padding-top: 8px;
+
+    button + button {
+      margin-left: 8px;
+    }
+  }
+}

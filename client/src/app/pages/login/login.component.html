@@ -14,7 +14,9 @@
 
     <div class="button-container">
       <button mat-flat-button color="primary">Login</button>
-      <button mat-stroked-button color="default">Sign Up</button>
+      <button mat-stroked-button color="default" (click)="navigateToSignUp()">
+        Sign Up
+      </button>
     </div>
   </form>
 </mat-card>
