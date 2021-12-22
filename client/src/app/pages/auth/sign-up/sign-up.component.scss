@@ -1,0 +1,29 @@
+:host ::ng-deep {
+  display: flex;
+  justify-content: center;
+}
+
+mat-card {
+  width: fit-content;
+
+  .sign-up-form {
+    min-width: 300px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .error {
+    padding-top: 8px;
+    color: red;
+  }
+
+  .button-container {
+    display: flex;
+    padding-top: 8px;
+
+    button + button {
+      margin-left: 8px;
+    }
+  }
+}

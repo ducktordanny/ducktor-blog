@@ -1,0 +1,100 @@
+<mat-card>
+  <form class="sign-up-form" [formGroup]="signUpForm" (submit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput type="text" name="username" formControlName="username" />
+
+      <mat-error *ngIf="username?.hasError('minlength')">
+        Username must be at least 3 character
+      </mat-error>
+      <mat-error *ngIf="username?.hasError('maxlength')">
+        Username must be maximum 16 character
+      </mat-error>
+      <mat-error *ngIf="username?.hasError('required')">
+        Username is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>E-mail</mat-label>
+      <input matInput type="text" name="email" formControlName="email" />
+
+      <mat-error *ngIf="email?.hasError('email')">
+        Email must be <strong>valid</strong>
+      </mat-error>
+      <mat-error *ngIf="email?.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        type="password"
+        name="password"
+        formControlName="password"
+      />
+
+      <mat-error *ngIf="password?.hasError('minlength')">
+        Password must be at least 8 character
+      </mat-error>
+      <mat-error *ngIf="password?.hasError('maxlength')">
+        Password must be maximum 30 character
+      </mat-error>
+      <mat-error *ngIf="password?.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password again</mat-label>
+      <input
+        matInput
+        type="password"
+        name="passwordAgain"
+        formControlName="passwordAgain"
+      />
+
+      <mat-error *ngIf="passwordAgain?.hasError('minlength')">
+        Password again must be at least 8 character
+      </mat-error>
+      <mat-error *ngIf="passwordAgain?.hasError('maxlength')">
+        Password again must be maximum 30 character
+      </mat-error>
+      <mat-error *ngIf="passwordAgain?.hasError('required')">
+        Password again is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Bio (optional)</mat-label>
+      <textarea
+        matInput
+        placeholder="Ex. My hobbies are: ..."
+        name="bio"
+        formControlName="bio"
+      ></textarea>
+
+      <mat-hint>{{ "100/" + bio?.value.length }}</mat-hint>
+      <mat-error *ngIf="bio?.hasError('maxlength')">
+        Bio must be maximum 100 character
+      </mat-error>
+    </mat-form-field>
+
+    <mat-checkbox color="primary">Log me in</mat-checkbox>
+
+    <mat-error *ngIf="signUpForm.hasError('missmatch')">
+      The passwords should match!
+    </mat-error>
+
+    <div class="button-container">
+      <button mat-flat-button color="primary" [disabled]="signUpForm.invalid">
+        Sign Up
+      </button>
+      <button mat-stroked-button color="default" (click)="navigateToLogin()">
+        Login
+      </button>
+    </div>
+  </form>
+</mat-card>
