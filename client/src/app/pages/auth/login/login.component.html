@@ -1,0 +1,34 @@
+<mat-card>
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput type="text" formControlName="username" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" />
+    </mat-form-field>
+
+    <mat-checkbox color="primary">Keep me logged in</mat-checkbox>
+
+    <div class="button-container">
+      <button
+        mat-flat-button
+        color="primary"
+        type="submit"
+        [disabled]="loginForm.invalid"
+      >
+        Login
+      </button>
+      <button
+        mat-stroked-button
+        color="default"
+        type="button"
+        (click)="navigateToSignUp()"
+      >
+        Sign Up
+      </button>
+    </div>
+  </form>
+</mat-card>

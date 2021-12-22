@@ -1,7 +1,12 @@
+:host ::ng-deep {
+  display: flex;
+  justify-content: center;
+}
+
 mat-card {
   width: fit-content;
 
-  .sign-up-form {
+  .login-form {
     min-width: 300px;
     max-width: 500px;
     display: flex;
