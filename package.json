@@ -11,6 +11,13 @@
     "start:server": "yarn --cwd ./server start:dev",
     "format": "yarn format:server & yarn format:client",
     "format:client": "yarn --cwd ./client format",
-    "format:server": "yarn --cwd ./server format"
+    "format:server": "yarn --cwd ./server format",
+    "postinstall": "husky install",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable"
+  },
+  "devDependencies": {
+    "husky": "^7.0.4",
+    "pinst": "^2.1.6"
   }
 }
