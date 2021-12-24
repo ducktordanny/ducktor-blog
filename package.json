@@ -1,0 +1,16 @@
+{
+  "name": "ducktor-blog",
+  "version": "0.0.1",
+  "description": "A blog with Angular & NestJS",
+  "repository": "git@github.com:ducktordanny/ducktor-blog.git",
+  "author": "Daniel Lazar <lazardani0112@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn start:server & yarn start:client",
+    "start:client": "yarn --cwd ./client start",
+    "start:server": "yarn --cwd ./server start:dev",
+    "format": "yarn format:server & yarn format:client",
+    "format:client": "yarn --cwd ./client format",
+    "format:server": "yarn --cwd ./server format"
+  }
+}
