@@ -5,6 +5,7 @@
   "repository": "git@github.com:ducktordanny/ducktor-blog.git",
   "author": "Daniel Lazar <lazardani0112@gmail.com>",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "start": "yarn start:server & yarn start:client",
     "start:client": "yarn --cwd ./client start",
@@ -12,12 +13,9 @@
     "format": "yarn format:server & yarn format:client",
     "format:client": "yarn --cwd ./client format",
     "format:server": "yarn --cwd ./server format",
-    "postinstall": "husky install",
-    "prepublishOnly": "pinst --disable",
-    "postpublish": "pinst --enable"
+    "postinstall": "husky install"
   },
   "devDependencies": {
-    "husky": "^7.0.4",
-    "pinst": "^2.1.6"
+    "husky": "^7.0.4"
   }
 }
