@@ -24,6 +24,7 @@ export class AppController {
     return this.authService.login(req.user);
   }
 
+  // todo: /signup?login-after=true
   @Post('signup')
   public async signupUser(
     @Body()

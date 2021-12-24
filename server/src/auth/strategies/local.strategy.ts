@@ -11,7 +11,6 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     super();
   }
 
-  // todo: response type
   public async validate(
     username: string,
     password: string,
