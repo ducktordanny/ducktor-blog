@@ -1,8 +1,8 @@
-import { Body, Controller, Get, Put, Request, UseGuards } from '@nestjs/common';
+import {Body, Controller, Get, Put, Request, UseGuards} from '@nestjs/common';
 
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { UserService } from 'src/db/user/user.service';
-import { ProfileModel, RequestUser } from 'src/types';
+import {JwtAuthGuard} from 'src/auth/guards/jwt-auth.guard';
+import {UserService} from 'src/db/user/user.service';
+import {ProfileModel, RequestUser} from 'src/types';
 import {
   EmailChangeValidator,
   PasswordChangeValidator,
@@ -50,7 +50,7 @@ export class UserController {
   @Put('bio')
   public async changeBio(
     @Request() req: RequestUser,
-    @Body() body: { newBio: string },
+    @Body() body: {newBio: string},
   ): Promise<string> {
     return this.userService.changeBio(req.user.username, body.newBio);
   }

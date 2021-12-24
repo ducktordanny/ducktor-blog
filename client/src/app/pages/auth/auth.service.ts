@@ -1,10 +1,10 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
 
 // import { User } from './user.model';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class AuthService {
   public token = new BehaviorSubject<string | null>(null);
 
@@ -12,7 +12,7 @@ export class AuthService {
 
   public loginUser(username: string, password: string): void {
     this.http
-      .post<{ access_token: string }>('/api/login', {
+      .post<{access_token: string}>('/api/login', {
         username,
         password,
       })
@@ -23,7 +23,7 @@ export class AuthService {
     username: string,
     email: string,
     password: string,
-    bio: string = ''
+    bio: string = '',
   ): void {
     this.http
       .post('/api/signup', {

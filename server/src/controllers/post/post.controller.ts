@@ -10,12 +10,12 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-import { FileInterceptor } from '@nestjs/platform-express';
-import { Post } from '@prisma/client';
+import {FileInterceptor} from '@nestjs/platform-express';
+import {Post} from '@prisma/client';
 
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { PostService } from 'src/db/post/post.service';
-import { RequestUser } from 'src/types';
+import {JwtAuthGuard} from 'src/auth/guards/jwt-auth.guard';
+import {PostService} from 'src/db/post/post.service';
+import {RequestUser} from 'src/types';
 
 @UseGuards(JwtAuthGuard)
 @Controller('post')
@@ -28,10 +28,10 @@ export class PostController {
   }
 
   @PostRequest('upload/:title')
-  @UseInterceptors(FileInterceptor('file', { dest: 'src/upload/post' }))
+  @UseInterceptors(FileInterceptor('file', {dest: 'src/upload/post'}))
   public async uploadFile(
     @Request() req: RequestUser,
-    @Param() { title }: { title: string },
+    @Param() {title}: {title: string},
     @UploadedFile() file: Express.Multer.File,
   ): Promise<Post> {
     return await this.postService.createNewPostByUpload(
@@ -42,17 +42,17 @@ export class PostController {
   }
 
   @Put('modify/:id')
-  @UseInterceptors(FileInterceptor('file', { dest: 'src/upload/post' }))
+  @UseInterceptors(FileInterceptor('file', {dest: 'src/upload/post'}))
   public async modifyPostById(
     @Request() req: RequestUser,
-    @Param() { id }: { id: number },
+    @Param() {id}: {id: number},
     @UploadedFile() file: Express.Multer.File,
   ): Promise<Post> {
     return this.postService.modifyPost(req.user.id, id, file.filename);
   }
 
   @Delete('delete/:id')
-  public async deletePostById(@Param() { id }: { id: number }): Promise<void> {
+  public async deletePostById(@Param() {id}: {id: number}): Promise<void> {
     await this.postService.deletePostById(+id);
   }
 }

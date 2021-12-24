@@ -1,15 +1,15 @@
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import {NgModule} from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
 import {
   ErrorStateMatcher,
   ShowOnDirtyErrorStateMatcher,
 } from '@angular/material/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { AppComponent } from './app.component';
-import { PagesModule } from './pages/pages.module';
-import { AppRoutingModule } from './app-routing.module';
+import {AppComponent} from './app.component';
+import {PagesModule} from './pages/pages.module';
+import {AppRoutingModule} from './app-routing.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
     PagesModule,
   ],
   providers: [
-    { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},
   ],
   bootstrap: [AppComponent],
 })

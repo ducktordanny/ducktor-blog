@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -6,12 +6,12 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 
-import { ErrorStateMatcherService } from '@shared/error-state-matcher.service';
-import { take, tap } from 'rxjs/operators';
+import {ErrorStateMatcherService} from '@shared/error-state-matcher.service';
+import {take, tap} from 'rxjs/operators';
 
-import { AuthService } from '../auth.service';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -36,7 +36,7 @@ export class SignUpComponent implements OnInit {
       passwordAgain: new FormControl('', [Validators.required]),
       bio: new FormControl('', [Validators.maxLength(100)]),
     },
-    { validators: [this.matchingPasswords()] }
+    {validators: [this.matchingPasswords()]},
   );
   matcher = new ErrorStateMatcherService();
 

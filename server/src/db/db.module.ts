@@ -1,10 +1,10 @@
-import { Module } from '@nestjs/common';
+import {Module} from '@nestjs/common';
 
-import { PrismaService } from './prisma/prisma.service';
-import { UserService } from './user/user.service';
-import { CommentService } from './comment/comment.service';
-import { PostService } from './post/post.service';
-import { ProfileService } from './profile/profile.service';
+import {PrismaService} from './prisma/prisma.service';
+import {UserService} from './user/user.service';
+import {CommentService} from './comment/comment.service';
+import {PostService} from './post/post.service';
+import {ProfileService} from './profile/profile.service';
 
 @Module({
   providers: [

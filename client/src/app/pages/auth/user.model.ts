@@ -4,7 +4,7 @@ export class User {
     public username: string,
     public email: string,
     private _token: string,
-    private _expirationDate: Date
+    private _expirationDate: Date,
   ) {}
 
   public get token() {

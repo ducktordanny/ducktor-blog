@@ -1,4 +1,4 @@
-import { IsEmail, Length, MaxLength } from 'class-validator';
+import {IsEmail, Length, MaxLength} from 'class-validator';
 
 export class SignUpValidator {
   @Length(3, 16) username: string;
