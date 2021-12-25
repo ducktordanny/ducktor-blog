@@ -76,7 +76,7 @@
         formControlName="bio"
       ></textarea>
 
-      <mat-hint>{{ "100/" + bio?.value.length }}</mat-hint>
+      <mat-hint>{{ '100/' + bio?.value?.length }}</mat-hint>
       <mat-error *ngIf="bio?.hasError('maxlength')">
         Bio must be maximum 100 character
       </mat-error>
@@ -89,10 +89,20 @@
     </mat-error>
 
     <div class="button-container">
-      <button mat-flat-button color="primary" [disabled]="signUpForm.invalid">
+      <button
+        mat-flat-button
+        color="primary"
+        type="submit"
+        [disabled]="signUpForm.invalid"
+      >
         Sign Up
       </button>
-      <button mat-stroked-button color="default" (click)="navigateToLogin()">
+      <button
+        mat-stroked-button
+        color="default"
+        type="button"
+        (click)="navigateToLogin()"
+      >
         Login
       </button>
     </div>
