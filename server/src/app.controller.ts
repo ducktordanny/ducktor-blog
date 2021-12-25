@@ -1,4 +1,14 @@
-import {Body, Controller, Get, Post, Request, UseGuards} from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Query,
+  Request,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
+import {Response} from 'express';
 
 import {LocalAuthGuard} from 'src/auth/guards/local-auth.guard';
 import {AuthService} from './auth/auth.service';
@@ -24,14 +34,15 @@ export class AppController {
     return this.authService.login(req.user);
   }
 
-  // todo: /signup?login-after=true
-  @Post('signup')
+  @Post('signup?')
   public async signupUser(
     @Body()
     body: SignUpValidator,
+    @Query('login-after') loginAfter: boolean,
+    @Res() res: Response,
   ): Promise<ProfileModel> {
     const {username, email, password} = body;
-    return await this.userService.createUser(
+    const signUpResponse = await this.userService.createUser(
       {
         username,
         email,
@@ -39,5 +50,11 @@ export class AppController {
       },
       body.bio,
     );
+
+    if (loginAfter) {
+      res.redirect('login', 307);
+    }
+
+    return signUpResponse;
   }
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -9,7 +9,6 @@ import {
 import {Router} from '@angular/router';
 
 import {ErrorStateMatcherService} from '@shared/error-state-matcher.service';
-import {take, tap} from 'rxjs/operators';
 
 import {AuthService} from '../auth.service';
 
@@ -19,6 +18,7 @@ import {AuthService} from '../auth.service';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
+  @ViewChild('loginAfter') loginAfter!: ElementRef<boolean>;
   // todo: add error showing provided by @angular/material (hint: https://v12.material.angular.io/components/input/overview#input-error-state-matcher)
   signUpForm = new FormGroup(
     {
@@ -35,6 +35,7 @@ export class SignUpComponent implements OnInit {
       ]),
       passwordAgain: new FormControl('', [Validators.required]),
       bio: new FormControl('', [Validators.maxLength(100)]),
+      loginAfter: new FormControl(true),
     },
     {validators: [this.matchingPasswords()]},
   );
@@ -65,13 +66,14 @@ export class SignUpComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    if (this.signUpForm.value) {
+    if (this.signUpForm.valid) {
       const username: string = this.signUpForm.get('username')?.value;
       const email: string = this.signUpForm.get('email')?.value;
       const password: string = this.signUpForm.get('password')?.value;
-      const bio: string = this.signUpForm.get('bio')?.value;
+      const bio: string = this.signUpForm.get('bio')?.value || '';
+      const loginAfter: boolean = this.signUpForm.get('loginAfter')?.value;
 
-      this.authService.signUpAUser(username, email, password, bio);
+      this.authService.signUpAUser(username, email, password, bio, loginAfter);
     }
     this.signUpForm.reset();
   }
@@ -80,6 +82,7 @@ export class SignUpComponent implements OnInit {
     this.router.navigate(['/auth/login']);
   }
 
+  // todo: could be separated
   private matchingPasswords(): ValidatorFn {
     return (control: AbstractControl) => {
       const password = control.get('password')?.value;

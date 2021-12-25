@@ -1,4 +1,4 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 
@@ -24,14 +24,18 @@ export class AuthService {
     email: string,
     password: string,
     bio: string = '',
+    loginAfter?: boolean,
   ): void {
     this.http
-      .post('/api/signup', {
-        username,
-        email,
-        password,
-        bio,
-      })
+      .post(
+        '/api/signup',
+        {username, email, password, bio},
+        {
+          params: loginAfter
+            ? new HttpParams().set('login-after', loginAfter)
+            : {},
+        },
+      )
       .subscribe((res) => {
         console.log(res);
       });

@@ -82,7 +82,9 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-checkbox color="primary">Log me in</mat-checkbox>
+    <mat-checkbox color="primary" formControlName="loginAfter"
+      >Log me in</mat-checkbox
+    >
 
     <mat-error *ngIf="signUpForm.hasError('missmatch')">
       The passwords should match!
