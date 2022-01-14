@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
     "format": "prettier --write \"src/**/*.ts\"",
+    "format:staged": "pretty-quick --staged",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -38,6 +39,7 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "prettier": "2.5.1",
+    "pretty-quick": "^3.1.3",
     "typescript": "~4.4.3"
   }
 }

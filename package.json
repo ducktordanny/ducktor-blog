@@ -10,9 +10,10 @@
     "start": "yarn start:server & yarn start:client",
     "start:client": "yarn --cwd ./client start",
     "start:server": "yarn --cwd ./server start:dev",
-    "format": "yarn format:server & yarn format:client",
-    "format:client": "yarn --cwd ./client format",
-    "format:server": "yarn --cwd ./server format",
+    "husky": "yarn format:server & yarn format:client & yarn lint:server",
+    "format:client": "yarn --cwd ./client format:staged",
+    "format:server": "yarn --cwd ./server format:staged",
+    "lint:server": "yarn --cwd ./server lint",
     "postinstall": "husky install"
   },
   "devDependencies": {
