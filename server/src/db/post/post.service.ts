@@ -1,7 +1,7 @@
 import {Injectable} from '@nestjs/common';
-import {Post} from '@prisma/client';
 import {unlink} from 'fs/promises';
 
+import {Post} from '@prisma/client';
 import {PrismaService} from 'src/db/prisma/prisma.service';
 
 @Injectable()
