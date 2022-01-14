@@ -2,6 +2,7 @@ import {Injectable} from '@nestjs/common';
 import {PassportStrategy} from '@nestjs/passport';
 import {ExtractJwt} from 'passport-jwt';
 import {Strategy} from 'passport-jwt';
+
 import {Payload} from 'src/types';
 
 @Injectable()

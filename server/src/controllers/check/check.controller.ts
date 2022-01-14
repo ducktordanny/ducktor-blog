@@ -1,4 +1,5 @@
 import {Controller, Get, Param} from '@nestjs/common';
+
 import {UserService} from 'src/db/user/user.service';
 
 @Controller('check')

@@ -1,7 +1,7 @@
 import {BadRequestException, Injectable} from '@nestjs/common';
-import {Prisma, User} from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 
+import {Prisma, User} from '@prisma/client';
 import {PrismaService} from 'src/db/prisma/prisma.service';
 import {ProfileModel} from 'src/types';
 

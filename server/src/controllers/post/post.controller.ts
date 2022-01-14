@@ -11,8 +11,8 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import {FileInterceptor} from '@nestjs/platform-express';
-import {Post} from '@prisma/client';
 
+import {Post} from '@prisma/client';
 import {JwtAuthGuard} from 'src/auth/guards/jwt-auth.guard';
 import {PostService} from 'src/db/post/post.service';
 import {RequestUser} from 'src/types';

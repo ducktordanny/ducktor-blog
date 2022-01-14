@@ -11,10 +11,11 @@ import {
 import {Response} from 'express';
 
 import {LocalAuthGuard} from 'src/auth/guards/local-auth.guard';
+
 import {AuthService} from './auth/auth.service';
 import {UserService} from './db/user/user.service';
-import {ProfileModel} from './types';
 import {SignUpValidator} from './validators/user.validator';
+import {ProfileModel} from './types';
 
 @Controller()
 export class AppController {
