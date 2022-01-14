@@ -52,7 +52,7 @@ export class AppController {
     );
 
     if (loginAfter) {
-      res.redirect('login', 307);
+      res.redirect(307, 'login');
     }
 
     return signUpResponse;

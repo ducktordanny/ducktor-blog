@@ -19,14 +19,28 @@ const PROFILE_SELECT = {
 export class UserService {
   constructor(private prisma: PrismaService) {}
 
+  public async checkUsernameExists(username: string): Promise<boolean> {
+    const user = await this.prisma.user.findFirst({
+      where: {username},
+    });
+    return !!user;
+  }
+
+  public async checkEmailExists(email: string): Promise<boolean> {
+    const user = await this.prisma.user.findFirst({
+      where: {email},
+    });
+    return !!user;
+  }
+
   public async getAUser(username: string): Promise<User> {
-    return this.prisma.user.findFirst({
+    return await this.prisma.user.findFirst({
       where: {username},
     });
   }
 
   public async getAProfile(username: string): Promise<ProfileModel> {
-    return this.prisma.user.findFirst({
+    return await this.prisma.user.findFirst({
       where: {
         username,
       },
@@ -35,7 +49,7 @@ export class UserService {
   }
 
   public async getProfiles(): Promise<ProfileModel[]> {
-    return this.prisma.user.findMany({
+    return await this.prisma.user.findMany({
       select: {...PROFILE_SELECT, password: false},
     });
   }
