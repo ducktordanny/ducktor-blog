@@ -2,6 +2,33 @@
 
 > It's gonna be a blog site where everyone will be able to make their own profile, write things and see other's blog posts. This application made with Angular and NestJS. Made for fun.
 
+## Install
+
+- Clone the repo
+
+```sh
+git clone git@github.com:ducktordanny/ducktor-blog.git
+```
+
+- Install packages
+
+This will install everything what needed:
+
+```sh
+yarn setup
+```
+
+- Setup your config file
+
+Create the env file:
+
+```sh
+cd ./server
+touch .env
+```
+
+Then fill it with your information based on .env.sample
+
 ## License
 
 The MIT License (MIT)
