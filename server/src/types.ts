@@ -29,6 +29,6 @@ export interface RequestUser {
   };
 }
 
-export type TokenResponse = {
+export interface LoginResponse extends UserResponse {
   access_token: string;
-};
+}

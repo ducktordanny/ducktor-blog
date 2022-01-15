@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common';
-import { Post } from '@prisma/client';
-import { unlink } from 'fs/promises';
+import {Injectable} from '@nestjs/common';
+import {unlink} from 'fs/promises';
 
-import { PrismaService } from 'src/db/prisma/prisma.service';
+import {Post} from '@prisma/client';
+import {PrismaService} from 'src/db/prisma/prisma.service';
 
 @Injectable()
 export class PostService {
@@ -22,7 +22,7 @@ export class PostService {
         title,
         markdownPath: `post/${markdownPath}`,
         user: {
-          connect: { id: userId },
+          connect: {id: userId},
         },
       },
     });
@@ -34,18 +34,18 @@ export class PostService {
     filename: string,
   ): Promise<Post> {
     const post = await this.prisma.post.findFirst({
-      where: { userId, id: postId },
+      where: {userId, id: postId},
     });
     await unlink(`src/upload/${post.markdownPath}`);
     return await this.prisma.post.update({
-      where: { id: postId },
-      data: { markdownPath: `post/${filename}` },
+      where: {id: postId},
+      data: {markdownPath: `post/${filename}`},
     });
   }
 
   public async deletePostById(id: number) {
     const deletedPost = await this.prisma.post.delete({
-      where: { id },
+      where: {id},
     });
     await unlink(`src/upload/${deletedPost.markdownPath}`);
   }

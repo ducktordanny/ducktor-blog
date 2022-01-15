@@ -1,0 +1,23 @@
+{
+  "name": "ducktor-blog",
+  "version": "0.0.1",
+  "description": "A blog with Angular & NestJS",
+  "repository": "git@github.com:ducktordanny/ducktor-blog.git",
+  "author": "Daniel Lazar <lazardani0112@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "yarn start:server & yarn start:client",
+    "start:client": "yarn --cwd ./client start",
+    "start:server": "yarn --cwd ./server start:dev",
+    "husky": "yarn format:server & yarn format:client & yarn lint:server",
+    "format:client": "yarn --cwd ./client format:staged",
+    "format:server": "yarn --cwd ./server format:staged",
+    "lint:server": "yarn --cwd ./server lint",
+    "postinstall": "husky install",
+    "setup": "yarn install & yarn --cwd ./client install & yarn --cwd ./server install"
+  },
+  "devDependencies": {
+    "husky": "^7.0.4"
+  }
+}
