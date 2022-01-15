@@ -76,6 +76,7 @@ export class SignUpComponent implements OnInit {
       this.authService.signUpAUser(username, email, password, bio, loginAfter);
     }
     this.signUpForm.reset();
+    this.signUpForm.markAllAsTouched();
   }
 
   public navigateToLogin(): void {

@@ -1,14 +1,13 @@
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
-
-// import { User } from './user.model';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
   public token = new BehaviorSubject<string | null>(null);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   public loginUser(username: string, password: string): void {
     this.http
@@ -16,7 +15,10 @@ export class AuthService {
         username,
         password,
       })
-      .subscribe((res) => console.log(res));
+      .subscribe((res) => {
+        console.log(res);
+        this.router.navigate(['profile']);
+      });
   }
 
   public signUpAUser(
@@ -38,6 +40,7 @@ export class AuthService {
       )
       .subscribe((res) => {
         console.log(res);
+        this.router.navigate(['profile']);
       });
   }
 }

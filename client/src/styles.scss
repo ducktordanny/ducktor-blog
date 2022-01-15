@@ -1,6 +1,6 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use "@angular/material" as mat;
+@use '@angular/material' as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -43,5 +43,5 @@ body {
 body {
   background-image: linear-gradient(to bottom, #7283a6, #f2e3bf);
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }

@@ -1,2 +1,10 @@
-<header>DucktorBlog</header>
+<header>
+  <label (click)="goToHome()">DucktorBlog</label>
+  <button mat-raised-button color="primary" (click)="navigateToAuth('login')">
+    Login
+  </button>
+  <button mat-raised-button color="primary" (click)="navigateToAuth('sign-up')">
+    Sign up
+  </button>
+</header>
 <router-outlet></router-outlet>
