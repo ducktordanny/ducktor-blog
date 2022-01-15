@@ -3,6 +3,7 @@ import {
   AbstractControl,
   FormControl,
   FormGroup,
+  ValidationErrors,
   ValidatorFn,
   Validators,
 } from '@angular/forms';
@@ -14,12 +15,11 @@ import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss'],
+  templateUrl: './sign-up.template.html',
+  styleUrls: ['./sign-up.styles.scss'],
 })
 export class SignUpComponent implements OnInit {
   @ViewChild('loginAfter') loginAfter!: ElementRef<boolean>;
-  // todo: add error showing provided by @angular/material (hint: https://v12.material.angular.io/components/input/overview#input-error-state-matcher)
   signUpForm = new FormGroup(
     {
       username: new FormControl('', [
@@ -37,7 +37,7 @@ export class SignUpComponent implements OnInit {
       bio: new FormControl('', [Validators.maxLength(100)]),
       loginAfter: new FormControl(true),
     },
-    {validators: [this.matchingPasswords()]},
+    {validators: [this.matchingPasswords]},
   );
   matcher = new ErrorStateMatcherService();
 
@@ -83,20 +83,14 @@ export class SignUpComponent implements OnInit {
   }
 
   // todo: could be separated
-  private matchingPasswords(): ValidatorFn {
-    return (control: AbstractControl) => {
-      const password = control.get('password')?.value;
-      const passwordAgain = control.get('passwordAgain')?.value;
-      if (
-        password === passwordAgain ||
-        password === '' ||
-        passwordAgain === ''
-      ) {
-        return null;
-      }
-      return {
-        missmatch: true,
-      };
+  private matchingPasswords(control: AbstractControl): ValidationErrors | null {
+    const password = control.get('password')?.value;
+    const passwordAgain = control.get('passwordAgain')?.value;
+    if (password === passwordAgain || password === '' || passwordAgain === '') {
+      return null;
+    }
+    return {
+      missmatch: true,
     };
   }
 }
