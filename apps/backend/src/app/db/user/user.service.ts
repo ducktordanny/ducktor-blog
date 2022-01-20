@@ -1,9 +1,9 @@
 import {BadRequestException, Injectable} from '@nestjs/common';
-import * as bcrypt from 'bcrypt';
 
 import {Prisma, User} from '@prisma/client';
 import {PrismaService} from '@backend/db/prisma/prisma.service';
 import {ProfileModel} from '@backend/types';
+import * as bcrypt from 'bcrypt';
 
 const PROFILE_SELECT = {
   username: true,

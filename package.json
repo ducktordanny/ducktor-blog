@@ -10,7 +10,7 @@
     "format:staged": "pretty-quick --staged",
     "lint:frontend": "nx lint frontend",
     "lint:backend": "nx lint backend",
-    "lint": "yarn lint:frontend && yarn lint:backend",
+    "lint": "nx run-many --all --target=lint",
     "lint:fix": "",
     "postinstall": "ngcc --properties es2015 browser module main",
     "prepare": "husky install"
@@ -78,6 +78,7 @@
     "eslint": "8.2.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "^2.10.3",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
     "husky": "^7.0.0",
     "jest": "27.2.3",
     "jest-preset-angular": "11.0.0",

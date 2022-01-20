@@ -16,8 +16,8 @@ import {Post} from '@prisma/client';
 import {JwtAuthGuard} from '@backend/auth/guards/jwt-auth.guard';
 import {PostService} from '@backend/db/post/post.service';
 import {RequestUser} from '@backend/types';
-
 import {Express} from 'express';
+
 import 'multer';
 
 @UseGuards(JwtAuthGuard)

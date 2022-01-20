@@ -1,8 +1,8 @@
 import {Injectable} from '@nestjs/common';
-import {unlink} from 'fs/promises';
 
 import {Post} from '@prisma/client';
 import {PrismaService} from '@backend/db/prisma/prisma.service';
+import {unlink} from 'fs/promises';
 
 @Injectable()
 export class PostService {

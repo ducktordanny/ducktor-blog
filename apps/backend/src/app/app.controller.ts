@@ -8,9 +8,9 @@ import {
   Res,
   UseGuards,
 } from '@nestjs/common';
-import {Response} from 'express';
 
 import {LocalAuthGuard} from '@backend/auth/guards/local-auth.guard';
+import {Response} from 'express';
 
 import {AuthService} from './auth/auth.service';
 import {UserService} from './db/user/user.service';
