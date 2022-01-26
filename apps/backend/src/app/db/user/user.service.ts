@@ -2,10 +2,11 @@ import {BadRequestException, Injectable} from '@nestjs/common';
 
 import {Prisma, User} from '@prisma/client';
 import {PrismaService} from '@backend/db/prisma/prisma.service';
-import {ProfileModel} from '@backend/types';
+import {AuthProfileModel, ProfileModel} from '@backend/types';
 import * as bcrypt from 'bcrypt';
 
 const PROFILE_SELECT = {
+  id: true,
   username: true,
   email: true,
   password: true,
@@ -41,10 +42,17 @@ export class UserService {
 
   public async getAProfile(username: string): Promise<ProfileModel> {
     return await this.prisma.user.findFirst({
-      where: {
-        username,
-      },
+      where: {username},
       select: {...PROFILE_SELECT, password: false},
+    });
+  }
+
+  public async getAProfileWithPassword(
+    username: string,
+  ): Promise<AuthProfileModel> {
+    return await this.prisma.user.findFirst({
+      where: {username},
+      select: {...PROFILE_SELECT},
     });
   }
 
