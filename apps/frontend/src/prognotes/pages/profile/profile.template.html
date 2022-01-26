@@ -1,1 +1,11 @@
-<p>profile component works!</p>
+<h1>Profile information</h1>
+<p *ngIf="(profileInforamtaion | async) !== undefined; else loading">
+  <label>{{(profileInforamtaion | async).username}}</label>
+  <label> | </label>
+  <label>{{(profileInforamtaion | async).email}}</label>
+  <label> | </label>
+  <label>{{(profileInforamtaion | async).createdAt}}</label>
+</p>
+<ng-template #loading>
+  <p>You have to login first!</p>
+</ng-template>

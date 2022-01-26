@@ -2,23 +2,32 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 
-import {BehaviorSubject} from 'rxjs';
+import {catchError} from 'rxjs';
+
+import {User} from './user.model';
+import {UserService} from './user.service';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-  public token = new BehaviorSubject<string | null>(null);
-
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private userService: UserService,
+  ) {}
 
   public loginUser(username: string, password: string): void {
     this.http
-      .post<{access_token: string}>('/api/login', {
+      .post<User>('/api/login', {
         username,
         password,
       })
-      .subscribe((res) => {
-        console.log(res);
-        this.router.navigate(['profile']);
+      .pipe(catchError((err) => err.error.message as string))
+      .subscribe((res: User | string) => {
+        if (typeof res !== 'string') {
+          this.router.navigate(['profile']);
+          this.userService.userInfo.next(res);
+          localStorage.setItem('user_info', JSON.stringify(res));
+        }
       });
   }
 
@@ -43,5 +52,10 @@ export class AuthService {
         console.log(res);
         this.router.navigate(['profile']);
       });
+  }
+
+  public logoutUser(): void {
+    this.userService.userInfo.next(undefined);
+    localStorage.removeItem('user_info');
   }
 }
