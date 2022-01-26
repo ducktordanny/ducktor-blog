@@ -3,10 +3,10 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'frontend-root',
-  templateUrl: './app.template.html',
-  styleUrls: ['./app.styles.scss'],
+  templateUrl: './prognotes.template.html',
+  styleUrls: ['./prognotes.styles.scss'],
 })
-export class AppComponent {
+export class ProgNotesComponent {
   title = 'client';
 
   constructor(private router: Router) {}

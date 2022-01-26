@@ -9,13 +9,13 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {PagesModule} from './pages/pages.module';
-import {AppComponent} from './app.component';
-import {AppRoutingModule} from './app-routing.module';
+import {ProgNotesComponent} from './prognotes.component';
+import {RoutingModule} from './routing.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [ProgNotesComponent],
   imports: [
-    AppRoutingModule,
+    RoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -25,6 +25,6 @@ import {AppRoutingModule} from './app-routing.module';
   providers: [
     {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [ProgNotesComponent],
 })
-export class AppModule {}
+export class ProgNotesModule {}

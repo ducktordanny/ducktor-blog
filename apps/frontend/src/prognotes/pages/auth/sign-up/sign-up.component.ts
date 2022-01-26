@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import {Router} from '@angular/router';
 
-import {ErrorStateMatcherService} from '@frontend/shared/error-state-matcher.service';
+import {ErrorStateMatcherService} from 'apps/frontend/src/prognotes/shared/error-state-matcher.service';
 
 import {AuthService} from '../auth.service';
 
