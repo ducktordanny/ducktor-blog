@@ -8,6 +8,10 @@ export interface ProfileModel {
   };
 }
 
+export interface AuthProfileModel extends ProfileModel {
+  password?: string;
+}
+
 export interface UserResponse {
   id: number;
   username: string;

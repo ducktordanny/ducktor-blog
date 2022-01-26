@@ -2,7 +2,7 @@ import {Injectable, UnauthorizedException} from '@nestjs/common';
 import {JwtService} from '@nestjs/jwt';
 
 import {UserService} from '@backend/db/user/user.service';
-import {LoginResponse, UserResponse} from '@backend/types';
+import {AuthProfileModel, LoginResponse, UserResponse} from '@backend/types';
 
 @Injectable()
 export class AuthService {
@@ -14,8 +14,8 @@ export class AuthService {
   public async validateUser(
     username: string,
     password: string,
-  ): Promise<UserResponse> {
-    const user = await this.userService.getAUser(username);
+  ): Promise<AuthProfileModel> {
+    const user = await this.userService.getAProfileWithPassword(username);
     if (!user) throw new UnauthorizedException('Invalid username!');
 
     const {password: hashedPassword, ...result} = user;
