@@ -3,7 +3,6 @@ import {
   AbstractControl,
   FormControl,
   FormGroup,
-  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import {Router} from '@angular/router';
@@ -11,6 +10,7 @@ import {Router} from '@angular/router';
 import {ErrorStateMatcherService} from 'apps/frontend/src/prognotes/shared/error-state-matcher.service';
 
 import {AuthService} from '../auth.service';
+import {AuthValidatorService} from '../auth.validator';
 
 @Component({
   selector: 'auth-sign-up',
@@ -36,11 +36,15 @@ export class SignUpComponent {
       bio: new FormControl('', [Validators.maxLength(100)]),
       loginAfter: new FormControl(true),
     },
-    {validators: [this.matchingPasswords]},
+    {validators: [this.validatorService.matchingPasswords]},
   );
   matcher = new ErrorStateMatcherService();
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private validatorService: AuthValidatorService,
+  ) {}
 
   public get username(): AbstractControl | null {
     return this.signUpForm.get('username');
@@ -78,17 +82,5 @@ export class SignUpComponent {
 
   public navigateToLogin(): void {
     this.router.navigate(['/auth/login']);
-  }
-
-  // todo: could be separated
-  private matchingPasswords(control: AbstractControl): ValidationErrors | null {
-    const password = control.get('password')?.value;
-    const passwordAgain = control.get('passwordAgain')?.value;
-    if (password === passwordAgain || password === '' || passwordAgain === '') {
-      return null;
-    }
-    return {
-      missmatch: true,
-    };
   }
 }
